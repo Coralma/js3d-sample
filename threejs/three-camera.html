@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Camera Usage</title>
+    <script src="lib/three.js"></script>
+</head>
+<body>
+    <h3>Three.js基本使用方式</h3>
+    <div id="threeDiv"></div>
+    <script>
+        // 创建场景
+        var sense = new THREE.Scene();
+        // 创建物品对象
+        var geometry = new THREE.BoxGeometry(100,100,100);
+        // 创建物品材质
+        var material = new THREE.MeshLambertMaterial({color:0x20a8d8});
+        // 把材质关联物品
+        var mesh = new THREE.Mesh(geometry, material);
+        // 放入场景中
+        sense.add(mesh);
+
+        //创建点光源
+        var light = new THREE.PointLight(0xffffff);
+        light.position.set(300,400,200);
+        sense.add(light);
+
+        // 放置相机
+        var camera = new THREE.PerspectiveCamera(40, 600/400, 1, 1000);
+        camera.position.set(200,200,200);
+        camera.lookAt(sense.position);
+
+        // 渲染器用于渲染以上物件
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize( 600, 400);
+        document.getElementById("threeDiv").appendChild( renderer.domElement );
+        renderer.render(sense, camera);
+    </script>
+</body>
+</html>

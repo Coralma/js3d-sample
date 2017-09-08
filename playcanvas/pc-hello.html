@@ -9,10 +9,10 @@
             overflow: hidden;
         }
     </style>
-    <script src='https://code.playcanvas.com/playcanvas-stable.min.js'></script>
+    <script src='lib/playcanvas-stable.js'></script>
 </head>
 <body>
-    <canvas id='application'></canvas>
+    <canvas id='application' width="500" height="500"></canvas>
     <script>
         // create a PlayCanvas application
         var canvas = document.getElementById('application');
@@ -20,7 +20,7 @@
         app.start();
 
         // fill the available space at full resolution
-        app.setCanvasFillMode(pc.FILLMODE_FILL_WINDOW);
+        app.setCanvasFillMode(pc.RESOLUTION_AUTO);
         app.setCanvasResolution(pc.RESOLUTION_AUTO);
 
         // ensure canvas is resized when window changes size
@@ -37,7 +37,7 @@
         // create camera entity
         var camera = new pc.Entity('camera');
         camera.addComponent('camera', {
-            clearColor: new pc.Color(0.1, 0.1, 0.1)
+            clearColor: new pc.Color(1,1,1)
         });
 
         // create directional light entity
